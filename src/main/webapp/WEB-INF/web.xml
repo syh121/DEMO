@@ -1,0 +1,32 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <!--  启动Spring-->
+  <context-param>
+    <!--    启动Spring：加载Spring核心配置-->
+    <param-name>contextConfigLocation</param-name>
+    <!--    注意：使用classpath：path（防止异常：FileNotFoundException）-->
+    <param-value>classpath:spring-conf/applicationContext.xml</param-value>
+  </context-param>
+
+  <!--    启动Spring MVC-->
+  <servlet>
+    <!--        配置Spring MVC的前端核心控制器-->
+    <servlet-name>DispatcherServlet</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!--        加载Spring MVC配置文件-->
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:spring-conf/applicationContext.xml</param-value>
+    </init-param>
+    <!--        服务器启动后立即加载Spring MVC配置文件-->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+</web-app>
